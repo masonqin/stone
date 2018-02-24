@@ -1,0 +1,28 @@
+build
+out
+
+# Mac OSX
+**/.DS_Store
+
+# Intellij IDEA
+.idea
+**/*.iml
+**.class
+target
+project/target/
+project/project/
+project/
+.sbtserver/
+
+# Eclipse
+**/.settings
+**/.project
+**/.classpath
+
+# Maven
+**/target
+
+# LOG
+**/logs
+
+
