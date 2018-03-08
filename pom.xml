@@ -44,12 +44,17 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
-
         <!--kafka-->
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.11</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>

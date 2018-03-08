@@ -3,7 +3,8 @@ package com.qinxc.threads;
 public class Thread2_MultiTurn {
 
     Object threadLock = new Object();
-    volatile int globalId = 0;
+    //volatile int globalId = 0;
+    int globalId=0;
 
     public static void main(String[] args) throws Exception {
 
@@ -41,22 +42,22 @@ public class Thread2_MultiTurn {
         }
 
         public void process() {
-            synchronized (threadLock) {
+            //synchronized (threadLock) {
                 while (true) {
                     try {
                         while (selfId != globalId % 3) {
-                            threadLock.wait();
+                            //threadLock.wait();
                         }
                         System.out.println("Name:" + this.name + "\tselfId:" + this.selfId + "\tselfCnt:" + selfCnt++);
                         globalId++;
-                        threadLock.notifyAll();
+                        //threadLock.notifyAll();
                         if (selfCnt == stopCnt)
                             break;
                     } catch (Exception e) {
 
                     }
                 }
-            }
+            //}
 
         }
     }
