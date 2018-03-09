@@ -23,10 +23,10 @@ public class KafkaStream_03 {
 //        kafka-console-consumer.sh --zookeeper localhost:2181 --topic streams-wordcount-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG,"streams-wordcount");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092,localhost:9093,localhost:9094");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG,Serdes.String().getClass());
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,Serdes.String().getClass());
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-wordcount");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092,localhost:9093,localhost:9094");
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         final StreamsBuilder builder = new StreamsBuilder();
 
@@ -40,20 +40,20 @@ public class KafkaStream_03 {
         final Topology topology = builder.build();
         System.out.println(topology.describe());
 
-        final KafkaStreams streams = new KafkaStreams(topology,props);
+        final KafkaStreams streams = new KafkaStreams(topology, props);
 
         final CountDownLatch latch = new CountDownLatch(1);
-        Runtime.getRuntime().addShutdownHook(new Thread("streams-shutdown-hook"){
-            public void run(){
+        Runtime.getRuntime().addShutdownHook(new Thread("streams-shutdown-hook") {
+            public void run() {
                 streams.close();
                 latch.countDown();
             }
         });
 
-        try{
+        try {
             streams.start();
             latch.await();
-        }catch (Throwable e){
+        } catch (Throwable e) {
             System.exit(1);
         }
         System.exit(0);
