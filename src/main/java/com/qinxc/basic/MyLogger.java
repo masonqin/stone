@@ -26,6 +26,9 @@ public class MyLogger {
         Object mapobj = new Object();
         mapobj.hashCode();
 
+//        ClassLoader classLoader =
+//                Class<>
+
 
     }
 

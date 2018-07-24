@@ -1,10 +1,10 @@
 package com.qinxc.basic;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.BigIntegerNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import javafx.scene.SubScene;
 
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 public class UrlEncoding {
@@ -56,11 +56,6 @@ public class UrlEncoding {
 //        System.out.println(w);
 //        System.out.println(Integer.parseInt(w.substring(0,resolution.indexOf("x"))));
 //        System.out.println(Integer.parseInt(w.substring(resolution.lastIndexOf("x")+1,resolution.length())));
-
-        String sdouble = "1";
-        int ans =  (int)Math.ceil(Double.valueOf(sdouble));
-        System.out.println(ans);
-
 
     }
 

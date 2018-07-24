@@ -8,10 +8,7 @@ import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
 import org.apache.kafka.streams.processor.Processor;
 import org.apache.kafka.streams.processor.ProcessorContext;
-import org.apache.kafka.streams.state.KeyValueIterator;
-import org.apache.kafka.streams.state.KeyValueStore;
-import org.apache.kafka.streams.state.StoreBuilder;
-import org.apache.kafka.streams.state.Stores;
+import org.apache.kafka.streams.state.*;
 
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
@@ -35,6 +32,12 @@ public class KafkaStream_04 {
                 Serdes.String(),
                 Serdes.Long());
 //                .withLoggingEnabled(changelogConfig);
+
+//        StoreSupplier countStoreSupplier = Stores.create("Counts")
+//                    .withKeys()
+//                    .withValues()
+//                    .persistent()
+//                    .build();
 
         final Topology topology = new Topology();
 
