@@ -4,8 +4,10 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.util.Base64;
+//import org.apache.commons.codec.binary.Base64;
+//import java.util.Base64;
 
 /**
  * Created by qxc on 2018/6/12.
@@ -37,8 +39,31 @@ public class AESDemo {
         Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
         cipher.init(Cipher.ENCRYPT_MODE, aesKey, ivParameterSpec);
         byte[] encryptBytes = cipher.doFinal(target.getBytes());
-        return new String(Base64.getEncoder().encode(encryptBytes));
+        return new String(java.util.Base64.getEncoder().encode(encryptBytes));
     }
+
+    public byte[] encrypt(String key, String target) throws Exception {
+
+        SecretKey aesKey = new SecretKeySpec(key.substring(0, 16).getBytes(), "AES");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, aesKey);
+        byte[] encryptBytes = cipher.doFinal(target.getBytes());
+        return encryptBytes;
+
+//        SecretKey aesKey = new SecretKeySpec(key.getBytes(), "AES");
+//        Cipher cipher = Cipher.getInstance("AES");
+//        cipher.init(Cipher.ENCRYPT_MODE, aesKey);
+//        byte[] result = cipher.doFinal(target.getBytes());
+//        return result;
+    }
+
+//    public static String urlSafeBase64(byte[] bytes){
+//        return Base64.encodeBase64URLSafeString(bytes);
+//    }
+//
+//    public static byte[] unUrlSafeBase64(String str) throws UnsupportedEncodingException {
+//        return Base64.decodeBase64(str.getBytes("UTF-8"));
+//    }
 
     public String decrypt(String key, String signature, String target) throws Exception {
 
@@ -47,7 +72,7 @@ public class AESDemo {
         IvParameterSpec ivParameterSpec = new IvParameterSpec(genMD5.substring(16, 32).getBytes());
         Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
         cipher.init(Cipher.DECRYPT_MODE, aesKey, ivParameterSpec);
-        byte[] decryptBytes = cipher.doFinal(Base64.getMimeDecoder().decode(target));
+        byte[] decryptBytes = cipher.doFinal(java.util.Base64.getMimeDecoder().decode(target));
         return new String(decryptBytes);
     }
 
@@ -87,7 +112,13 @@ public class AESDemo {
         System.out.println(deresult);
         System.out.println(target.equals(deresult));
 
+        System.out.println("==========");
+        target = "code_id=a10001&os_ver=5.1.1&app_ver=7.0&imei=867068020992938&mac=9C:99:A0:FF:E9:15&android_id=eedbdb39f66910a4&sw=1440&sh=2560&ot=1&ct=100";
+        String key = "wina012300000000";
+        byte[] retBytes = aesDemo.encrypt(key,target);
+        char[] finalBytes = aesDemo.encodeHex(retBytes,DIGITS_UPPER);
 
+        System.out.println(new String(finalBytes));
     }
 
 }
