@@ -105,4 +105,10 @@
 
     </dependencies>
 
+    <modules>
+        <module>thrift-client</module>
+        <module>thrift-contract</module>
+        <module>thrift-server</module>
+    </modules>
+
 </project>
