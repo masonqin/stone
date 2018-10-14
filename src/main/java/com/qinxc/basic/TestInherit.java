@@ -7,23 +7,22 @@ public class TestInherit {
 
         father father = new father();
         father child = new child();
-        System.out.println(father.num);
-        System.out.println(child.num);
+//        System.out.println(father.num);
+        father.target();
+//        System.out.println(child.num);
+        child.target();
     }
 
 }
 
 class father {
     public int num;
-    public String target(){
-        return "le monde";
-    }
-
+    public void target(){
+        System.out.println(num);
+        System.out.println("father");
+    };
 }
 
 class child extends father {
     public int num = 2;
-    public String target(){
-        return "world";
-    }
 }

@@ -8,10 +8,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -35,14 +32,14 @@ public class LuceneReadIndexExample
         }
 
         //Search by firstName
-        TopDocs foundDocs2 = searchByFirstName("Brian", searcher);
+        TopDocs foundDocs2 = searchByFirstName("first", searcher);
 
         System.out.println("Total Results :: " + foundDocs2.totalHits);
 
         for (ScoreDoc sd : foundDocs2.scoreDocs)
         {
             Document d = searcher.doc(sd.doc);
-            System.out.println(String.format(d.get("id")));
+            System.out.println(String.format(d.toString()));
         }
     }
 
@@ -68,4 +65,5 @@ public class LuceneReadIndexExample
         IndexSearcher searcher = new IndexSearcher(reader);
         return searcher;
     }
+
 }

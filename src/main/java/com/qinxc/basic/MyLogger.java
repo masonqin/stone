@@ -21,7 +21,7 @@ public class MyLogger {
         logger.debug("[debug message]");
         // 记录trace信息
         logger.trace("[trace message]");
-        System.out.println("hello world");
+        System.out.println("controller world");
 
         Object mapobj = new Object();
         mapobj.hashCode();

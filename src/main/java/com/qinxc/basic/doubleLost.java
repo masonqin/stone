@@ -1,11 +1,12 @@
 package com.qinxc.basic;
 
+
 /**
  * Created by qxc on 2018/7/20.
  */
 public class doubleLost {
 
-    public static char[] getBinaryChars(Float f){
+    public static char[] getBinaryChars(Float f) {
         char[] result = new char[32];
         char[] binaryChars = Integer.toBinaryString(Float.floatToIntBits(f)).toCharArray();
         if (binaryChars.length < result.length) {
@@ -13,13 +14,13 @@ public class doubleLost {
             for (int i = 0; i < result.length - binaryChars.length; i++) {
                 result[i] = '0';
             }
-        }else {
+        } else {
             result = binaryChars;
         }
         return result;
     }
 
-    public static char[] getBinaryChars(Double f){
+    public static char[] getBinaryChars(Double f) {
         char[] result = new char[64];
         char[] binaryChars = Long.toBinaryString(Double.doubleToLongBits(f)).toCharArray();
         if (binaryChars.length < result.length) {
@@ -27,13 +28,13 @@ public class doubleLost {
             for (int i = 0; i < result.length - binaryChars.length; i++) {
                 result[i] = '0';
             }
-        }else {
+        } else {
             result = binaryChars;
         }
         return result;
     }
 
-    public static void printFloatBinaryString(Double f){
+    public static void printFloatBinaryString(Double f) {
         char[] binaryChars = getBinaryChars(f);
         for (int i = 0; i < binaryChars.length; i++) {
             System.out.print(binaryChars[i]);
@@ -47,7 +48,7 @@ public class doubleLost {
     public static void main(String args[]) throws Exception {
 
         String sdouble = "1";
-        int ans =  (int)Math.ceil(Double.valueOf(sdouble));
+        int ans = (int) Math.ceil(Double.valueOf(sdouble));
         System.out.println(ans);
 
 //        float a = 0.3f;
@@ -67,5 +68,11 @@ public class doubleLost {
         Double e = 2.99999999999999988897769753748E-1;
         System.out.println(e);
 
+        String floatStr = "1";
+        Float aFloat = Float.parseFloat(floatStr);
+        System.out.println(aFloat);
+
     }
+
+
 }

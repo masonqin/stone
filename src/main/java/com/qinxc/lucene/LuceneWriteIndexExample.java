@@ -21,12 +21,13 @@ public class LuceneWriteIndexExample
     public static void main(String[] args) throws Exception
     {
         IndexWriter writer = createWriter();
+
         List<Document> documents = new ArrayList<>();
 
-        Document document1 = createDocument(1, "Lokesh", "Gupta", "howtodoinjava.com");
+        Document document1 = createDocument(1, "Lokesh first", "Gupta last", "howtodoinjava.com");
         documents.add(document1);
 
-        Document document2 = createDocument(2, "Brian", "Schultz", "example.com");
+        Document document2 = createDocument(2, "Brian first", "Schultz last", "example.com");
         documents.add(document2);
 
         //Let's clean everything first
@@ -51,6 +52,7 @@ public class LuceneWriteIndexExample
     {
         FSDirectory dir = FSDirectory.open(Paths.get(INDEX_DIR));
         IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());
+        config.setUseCompoundFile(false);
         IndexWriter writer = new IndexWriter(dir, config);
         return writer;
     }
