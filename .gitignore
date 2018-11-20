@@ -25,4 +25,6 @@ project/
 # LOG
 **/logs
 
+temp/
+
 

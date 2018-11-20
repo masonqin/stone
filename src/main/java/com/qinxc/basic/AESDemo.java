@@ -1,13 +1,15 @@
 package com.qinxc.basic;
 
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.util.DigestUtils;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-//import org.apache.commons.codec.binary.Base64;
-//import java.util.Base64;
+
 
 /**
  * Created by qxc on 2018/6/12.
@@ -32,8 +34,8 @@ public class AESDemo {
     public String encrypt(String key, String signature, String target) throws Exception {
 
         String genMD5 = getKeyAndIV(key, signature);
-        System.out.println(genMD5.substring(0,16));
-        System.out.println(genMD5.substring(16,32));
+        System.out.println(genMD5.substring(0, 16));
+        System.out.println(genMD5.substring(16, 32));
         SecretKey aesKey = new SecretKeySpec(genMD5.substring(0, 16).getBytes(), "AES");
         IvParameterSpec ivParameterSpec = new IvParameterSpec(genMD5.substring(16, 32).getBytes());
         Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
@@ -115,10 +117,13 @@ public class AESDemo {
         System.out.println("==========");
         target = "code_id=a10001&os_ver=5.1.1&app_ver=7.0&imei=867068020992938&mac=9C:99:A0:FF:E9:15&android_id=eedbdb39f66910a4&sw=1440&sh=2560&ot=1&ct=100";
         String key = "wina012300000000";
-        byte[] retBytes = aesDemo.encrypt(key,target);
-        char[] finalBytes = aesDemo.encodeHex(retBytes,DIGITS_UPPER);
+        byte[] retBytes = aesDemo.encrypt(key, target);
+        char[] finalBytes = aesDemo.encodeHex(retBytes, DIGITS_UPPER);
 
         System.out.println(new String(finalBytes));
+
+        System.out.println(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        System.out.println(DigestUtils.md5DigestAsHex("!Q@W#E$R%T^Y".getBytes()));
     }
 
 }

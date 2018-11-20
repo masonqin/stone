@@ -6,9 +6,11 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * @author qxc
@@ -18,6 +20,15 @@ public class StringOperation {
 
     public static void main(String[] args) {
 
+        String a = "100001,100020,100019";
+        String[] codes = a.split(",");
+
+        String b = "";
+        String[] codes2 = b.split(",");
+
+        System.out.println(new ArrayList<String>(Arrays.asList("100001", "100020", "100019")).stream().collect(Collectors.joining(",")));
+
+
 //        patternTest();
         parseEngineId();
 
@@ -26,7 +37,7 @@ public class StringOperation {
             for (Integer testId : testNullList) {
 //                System.out.println("Test");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

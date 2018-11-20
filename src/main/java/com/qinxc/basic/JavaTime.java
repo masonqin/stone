@@ -1,5 +1,8 @@
 package com.qinxc.basic;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,6 +30,17 @@ public class JavaTime {
         }
         System.out.println(startTime);
         System.out.println(endTime);
+
+        TestTimestamp test = new TestTimestamp();
+        test.setName("aaa");
+        test.setTimestamp(new Timestamp(1541390142000L));
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("test", test);
+        String jsonStr = jsonObject.toJSONString();
+        System.out.println(jsonStr);
+
+
     }
 
     public static Timestamp parseStringToTimeStamp(String timeStr, String pattern) throws Exception {
@@ -34,5 +48,27 @@ public class JavaTime {
         return new Timestamp(df.parse(timeStr).getTime());
     }
 
-
 }
+
+class TestTimestamp {
+    String name;
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    Timestamp timestamp;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+}
+
