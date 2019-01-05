@@ -1,7 +1,6 @@
 package com.qinxc.basic;
 
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.DigestUtils;
 
 import javax.crypto.Cipher;

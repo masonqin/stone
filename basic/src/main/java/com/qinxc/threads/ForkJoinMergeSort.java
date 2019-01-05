@@ -1,9 +1,7 @@
 package com.qinxc.threads;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
@@ -140,10 +138,10 @@ public class ForkJoinMergeSort {
         System.arraycopy(array, 0, array2, 0, array_size);
         //single thread mode
         long start = System.currentTimeMillis();
-        //sort(array, 0, array_size - 1);
+        sort(array, 0, array_size - 1);
         long end = System.currentTimeMillis();
-        //System.out.println("Single thread time: " + (end - start));
-        //System.out.println("Check result:" + checkResult(array));
+        System.out.println("Single thread time: " + (end - start));
+        System.out.println("Check result:" + checkResult(array));
         //fork join mode
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         MyTask task = new MyTask(array2);
@@ -159,6 +157,15 @@ public class ForkJoinMergeSort {
         System.out.println("Multi thread time: " + (end - start));
         System.out.println("Check result:" + checkResult(array3));
 
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 12, 7, 8));
+        Collections.sort(list, (Integer a, Integer b) -> {
+            if (a > b)
+                return 1;
+            else
+                return -1;
+        });
+
+        System.out.println(list);
     }
 
 }

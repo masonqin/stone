@@ -40,7 +40,10 @@ public class JavaTime {
         String jsonStr = jsonObject.toJSONString();
         System.out.println(jsonStr);
 
+        System.out.print(Timestamp.valueOf(LocalDateTime.now().minusDays(180).toLocalDate().atStartOfDay()));
 
+        int currentSalary = Math.round((10 + 11)/2f);
+        System.out.println(currentSalary);
     }
 
     public static Timestamp parseStringToTimeStamp(String timeStr, String pattern) throws Exception {
@@ -52,7 +55,7 @@ public class JavaTime {
 
 class TestTimestamp {
     String name;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     Timestamp timestamp;
 
     public String getName() {
