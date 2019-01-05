@@ -15,7 +15,7 @@
         <module>thrift-server</module>
         <module>thrift-client</module>
         <module>thrift-contract</module>
-        <module>SpringBootDemo</module>
+        <module>spring-boot</module>
     </modules>
 
 </project>
