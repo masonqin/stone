@@ -7,6 +7,74 @@ import java.util.*;
  * @author qxc
  * @date 2019/1/9.
  */
+/*
+递归型解法
+main 函数中for循环发动起始递归，控制递归深度等条件
+
+深搜方法
+current     中包含了目前的step深度，也可以单独给出
+remain      代表了剩余集合，也可以通过别的条件和总集合配合来实现
+stop        表示终止深度，终止条件也可以通过remain的size来判别
+step        表示当前深度
+result      结果集
+
+dfs(current,remain,int stop,int step,result){
+   if(current is valid){
+       //过滤、排序等特殊操作
+       Collections.sort(current);
+       //加入结果集
+       result.add(new Collection(current));
+   }
+   clone = new ArrayList<>(remain);
+   //遍历剩余集合
+   for(i : clone){
+       //走一步
+       stepNode = clone.get(i);
+       remain.remove(stepNode);
+       current.add(stepNode);
+       //带着刚走的一步，向下搜索
+       dfs(current,remain,stop,step++,result);
+       //搜索完了退回一步，下一轮循环走另外一步
+       remain.add(stepNode);
+       current.remove(stepNode);
+   }
+}
+
+
+非递归回溯方法
+走一步，将新步压栈，
+
+dfs(int stop,wholeSet){
+
+    Stack<> stack = new Stack<>();
+    stack.push([]);
+    while(!stack.empty()){
+        temp = stack.pop();
+        if(temp is valid){
+            //排序、过滤等特殊操作
+            Collections.sort(current);
+            //加入结果集
+            result.add(new Collection(current));
+        }
+        //去除temp中已有的元素，防止重复
+        Collection remain = new Collection<>(wholeSet);
+        for(i=0; i<temp.size(); i++){
+            remain.remove(temp.get(i))
+        }
+        //走下一步，压栈
+        for(i=0;i<remain.size();i++){
+            //走下一步
+            temp.add(remain.get(i));
+            //压栈
+            stack.push(new Collection(temp));
+            //清除刚走的一步
+            temp.remove(remain.get(i));
+        }
+    }
+}
+
+
+ */
 
 public class StringSub {
 
@@ -78,7 +146,5 @@ public class StringSub {
             }
         }
     }
-
-
 }
 
