@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
  */
 public class JavaTime {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         //时间相关测试
         Timestamp startTime;
         Timestamp endTime;
         int DURATION = 30;
-//        Timestamp followTime = parseStringToTimeStamp("2018/08/29 23:59:59", "yyyy/MM/dd hh:mm:ss");
         Timestamp followTime = null;
+        followTime = parseStringToTimeStamp("2018/07/15 23:59:59", "yyyy/MM/dd hh:mm:ss");
         if (followTime != null) {
             startTime = Timestamp.valueOf(followTime.toLocalDateTime().minusDays(DURATION).toLocalDate().atStartOfDay());
             endTime = followTime;

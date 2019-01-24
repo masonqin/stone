@@ -9,9 +9,9 @@ import java.util.Set;
  * @author qxc
  * @date 2018/12/20.
  */
-public class Redundant_Connection_684 {
+public class N684_RedundantConnection {
 
-    public static int[] Solotion(int[][] edges) {
+    public static int[] Solution(int[][] edges) {
 
         Map<Integer, Set<Integer>> nearMap = new HashMap<>();
 
@@ -46,7 +46,7 @@ public class Redundant_Connection_684 {
 
     public static void main(String[] args) {
         int[][] edges = new int[][]{{1, 2}, {1, 3}, {2, 3}};
-        int[] ret = Solotion(edges);
+        int[] ret = Solution(edges);
         System.out.println(ret[0] + "  " + ret[1]);
     }
 

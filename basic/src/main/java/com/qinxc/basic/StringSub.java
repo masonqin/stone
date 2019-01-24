@@ -146,5 +146,42 @@ public class StringSub {
             }
         }
     }
+
+
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            dfs(nums, i, result);
+        }
+        return result;
+    }
+
+    public void dfs(int[] nums, int length, List<List<Integer>> result) {
+
+        Stack<List<Integer>> stack = new Stack<>();
+        stack.push(new ArrayList<>());
+
+        while (!stack.isEmpty()) {
+            List<Integer> temp = stack.pop();
+            if (temp.size() == length) {
+                result.add(new ArrayList<>(temp));
+            }
+
+            Set<Integer> remainSet = new HashSet<>();
+            for (int i = 0; i < nums.length; i++) {
+                remainSet.add(nums[i]);
+            }
+            for (int i = 0; i < temp.size(); i++) {
+                remainSet.remove(temp.get(i));
+            }
+
+            for (Integer i : remainSet) {
+                temp.add(i);
+                stack.push(new ArrayList<>(temp));
+                temp.remove(temp.size() - 1);
+            }
+
+        }
+    }
 }
 
