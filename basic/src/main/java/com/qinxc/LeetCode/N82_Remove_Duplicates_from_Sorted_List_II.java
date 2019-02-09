@@ -44,12 +44,4 @@ public class N82_Remove_Duplicates_from_Sorted_List_II {
 }
 
 
-class ListNode {
-    int val;
-    ListNode next;
 
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}

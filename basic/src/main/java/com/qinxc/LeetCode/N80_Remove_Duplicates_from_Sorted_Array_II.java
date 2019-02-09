@@ -7,16 +7,17 @@ package com.qinxc.LeetCode;
  */
 public class N80_Remove_Duplicates_from_Sorted_Array_II {
 
+    //todo
     public int removeDuplicates(int[] nums) {
-        int temp,tempCnt;
-        for(int i=0;i<nums.length;i++){
+        int firstIndex, secondIndex;
+        for (int i = 0; i < nums.length; i++) {
 
         }
         return 0;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,1,1,2,2,2,3,3,3};
+        int[] nums = new int[]{1, 1, 1, 2, 2, 2, 3, 3, 3};
         new N80_Remove_Duplicates_from_Sorted_Array_II().removeDuplicates(nums);
     }
 }
