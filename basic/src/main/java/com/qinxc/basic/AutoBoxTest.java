@@ -3,6 +3,7 @@ package com.qinxc.basic;
 import scala.Int;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author qxc
@@ -33,5 +34,7 @@ public class AutoBoxTest {
         Integer[] array = fromList.toArray(new Integer[fromList.size()]);
         List<Integer> toList = Arrays.asList(array);
         toList.add(1);
+
+        Collections.unmodifiableList(fromList);
     }
 }
