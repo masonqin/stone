@@ -1,5 +1,7 @@
 package com.qinxc.basic;
 
+import com.qinxc.LeetCode.TreeNode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,16 +39,6 @@ public class SubList {
             end = end + 300;
         }
 
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 
     TreeNode errNode;
